@@ -17,7 +17,7 @@ void error(string s){
     throw runtime_error{s};
 }
 
-int main(int argc, char** argv) {
+int main() {
     try{
     myList<int> list1;
     myList<int>::myIterator it{}; //Erzeugen eines myIterator Objekts
@@ -38,7 +38,11 @@ int main(int argc, char** argv) {
     list1.print();
     return 0;
     }catch(exception &e){
-        
+        cerr << e.what() << endl;
+        return -2;
+    }catch(...){
+        cerr << "\nUnknown Exception\n" << endl;
+    return -1;
     }
 }
 
